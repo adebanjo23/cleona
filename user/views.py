@@ -293,7 +293,7 @@ def reset_password(request):
         if reset_token.is_expired():
             return Response({"error": "Token is expired."}, status=status.HTTP_400_BAD_REQUEST)
     except PasswordResetToken.DoesNotExist:
-        return Response({"error": "Invalid token."}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": "Invalid token"}, status=status.HTTP_400_BAD_REQUEST)
 
     user = reset_token.user
     user.set_password(new_password)
